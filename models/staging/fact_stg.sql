@@ -23,7 +23,6 @@ select
     categories.category_name,
     categories.description,
     products.product_name,
-    products.unit_price,
     suppliers.company_name,
     suppliers.contact_name,
     order_details.unit_price,
