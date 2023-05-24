@@ -8,7 +8,7 @@ sources:
 
     tables:
       - name: orders
-        description: This table lists orders from erp northwind
+        description: '{{doc("orders_docs")}}'
         columns:
           - name: order_id
             description: Unique ID for this table
