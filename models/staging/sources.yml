@@ -20,8 +20,8 @@ sources:
             tests:
               - relationships:
                   field: customer_id
-                  to: ref('customers')
-                  
+                  to: source('northwind', 'customers')
+
       - name: customers
         description: This table lists customers from erp northwind
       - name: order_details
