@@ -2,18 +2,40 @@ version: 2
 
 sources:
   - name: northwind
+    freshness:
+      warn_after:
+        count: 1
+        period: day
+      error_after:
+        count: 10000
+        period: day
+    loaded_at_field: cast(order_date as timestamp)      
+
     description: Data from northwind ERP
     database: curso-etl-101
     schema: erp_northwind
 
     tables:
       - name: orders
+        freshness:
+          warn_after:
+            count: 1
+            period: day
+          error_after:
+            count: 10000
+            period: day
+        loaded_at_field: cast(order_date as timestamp)      
+
         description: '{{doc("orders_docs")}}'
         columns:
           - name: order_id
             description: Unique ID for this table
             tests:
-              - unique
+              - unique:
+                  column_name: "order_id || product_id"
+                  config:
+                    warn_if: ">1"
+                    error_if: ">10"
               - not_null
           - name: customer_id
             description: Unique ID for this table
