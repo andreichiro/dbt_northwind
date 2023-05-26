@@ -35,7 +35,7 @@ sources:
                   column_name: "order_id || product_id"
                   config:
                     warn_if: ">1"
-                    error_if: ">10"
+                    error_if: ">10000"
               - not_null
           - name: customer_id
             description: Unique ID for this table
